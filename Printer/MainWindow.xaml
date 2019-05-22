@@ -1,0 +1,71 @@
+﻿<Window x:Class="Printer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        xmlns:local="clr-namespace:Printer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="1100">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="100*"/>
+        </Grid.ColumnDefinitions>
+
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="0" Padding="10" Margin="10">
+            <StackPanel>
+                <TextBox Name="dayTextBox" materialDesign:HintAssist.Hint="День" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox Name="monthTextBox" materialDesign:HintAssist.Hint="Месяц" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox Name="yearTextBox" materialDesign:HintAssist.Hint="Год" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox Name="markName" materialDesign:HintAssist.Hint="Марка автомобиля" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox Name="manufacturYear" materialDesign:HintAssist.Hint="Год выпуска" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox Name ="bodyName" materialDesign:HintAssist.Hint="Номер кузова" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox Name="colorCar" materialDesign:HintAssist.Hint="Цвет машины" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox Name="IIN" materialDesign:HintAssist.Hint="ИИН" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox Name="plateNumber" materialDesign:HintAssist.Hint="Номерной знак" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox Name ="cashMoney" materialDesign:HintAssist.Hint="Средства" Margin="10" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            </StackPanel>
+        </materialDesign:Card>
+
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" Grid.Column="1" Margin="10" Padding="10">
+            <FlowDocumentScrollViewer Name="documentViewer">
+                <FlowDocument>
+                    <Paragraph>ДОГОВОР</Paragraph>
+                    <Paragraph>купли продажи автомобиля</Paragraph>
+                    <Paragraph>"
+                        <TextBlock Name="day" Text="{Binding ElementName = dayTextBox, Path=Text}"/> /
+                        <TextBlock Name="month" Text="{Binding ElementName = monthTextBox, Path=Text}"/> "
+                    20
+                        <TextBlock Name="year" Text="{Binding ElementName=yearTextBox, Path=Text}"/> г.
+                    </Paragraph>
+                    <Paragraph>Продавец продал, а Покупатель купил в собственность легковой автомобиль марки "
+                        <TextBlock Text="{Binding ElementName=markName, Path=Text}"/> "
+                    </Paragraph>
+                    <Paragraph>, "
+                        <TextBlock Text="{Binding ElementName=manufacturYear, Path=Text}"/> " года выпуска , кузов № "
+                        <TextBlock Text="{Binding ElementName=bodyName, Path=Text}"/> " , цвет "
+                        <TextBlock Text="{Binding ElementName=colorCar, Path=Text}"/> ",
+                    </Paragraph>
+                    <Paragraph>идентификационный автомобиля"
+                        <TextBlock Text="{Binding ElementName=IIN, Path=Text}"/> ",
+                    </Paragraph>
+                    <Paragraph>государственный номерной знак "
+                        <TextBlock Text="{Binding ElementName=plateNumber, Path=Text}"/> " , состоящий на учете в
+                    </Paragraph>
+                    <Paragraph>Автомобиль продан Покупателю за "
+                        <TextBlock Text="{Binding ElementName=cashMoney, Path=Text}"/> "тенге, уплаченных Продавцу полностью до подписания настоящего договора. , с одной стороны,
+                    </Paragraph>
+                    <Paragraph>Продавец ставит Покупателя в известность, что отчуждаемый автомобиль приобретен им в период брака на совместные средства с супругом(ой) и является общим имуществом супругов.</Paragraph>
+                </FlowDocument>
+            </FlowDocumentScrollViewer>
+        </materialDesign:Card>
+    </Grid>
+</Window>
